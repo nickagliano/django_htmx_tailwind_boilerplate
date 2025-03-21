@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Slam Dunk{% endblock %}</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-blue-600">Slam Dunk</a>
+            <div>
+                {% if user.is_authenticated %}
+                    <span class="text-gray-700 mr-4">Welcome, {{ user.username }}!</span>
+                    <a href="{% url 'logout' %}" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                        Log out
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                        Log in
+                    </a>
+                    <a href="{% url 'signup' %}" class="ml-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+                        Sign up
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="content" class="container mx-auto mt-8 p-6 bg-white shadow-lg rounded-lg">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

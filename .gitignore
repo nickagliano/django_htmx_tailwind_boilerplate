@@ -1,0 +1,9 @@
+# uv virtual environment
+.venv
+
+# python stuff
+__pycache__
+*.pyc
+
+# overmind temp file
+.overmind.sock
