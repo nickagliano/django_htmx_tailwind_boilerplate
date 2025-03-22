@@ -1,11 +1,10 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from pydantic import ValidationError
-from typing import Any
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-def signup_view(request: Any) -> JsonResponse:
+def signup_view(request):
     if request.method == "POST":
         try:
             username = request.POST.get('username')
